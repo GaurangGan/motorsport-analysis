@@ -1,25 +1,44 @@
+import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Sample data (replace this with your actual data)
-data = {
-    'Driver': ['Lewis Hamilton', 'Max Verstappen', 'Valtteri Bottas', 'Charles Leclerc'],
-    'Race1_LapTimes': [90, 91, 92, 93],
-    'Race2_LapTimes': [88, 87, 89, 90],
-}
+def fetch_formula1_data(season):
+    api_url = f"https://ergast.com/api/f1/{season}.json"
+    response = requests.get(api_url)
+    data = response.json()
+    return data
 
-df = pd.DataFrame(data)
+def process_data(data):
+    # Extract relevant information from the API response
+    drivers_df = pd.DataFrame(data['MRData']['DriverTable']['Drivers'])
+    races_df = pd.DataFrame(data['MRData']['RaceTable']['Races'])
+    
+    return drivers_df, races_df
 
-# Data Analysis
-df['Average_LapTime'] = df[['Race1_LapTimes', 'Race2_LapTimes']].mean(axis=1)
+def analyze_data(drivers_df):
+    # Analyze data (example: top 10 drivers)
+    top_drivers = drivers_df.sort_values('points', ascending=False).head(10)
+    return top_drivers
 
-# Data Visualization
-fig, ax = plt.subplots(figsize=(10, 6))
+def visualize_data(top_drivers):
+    # Visualize data (example: bar chart for top drivers)
+    plt.bar(top_drivers['givenName'] + ' ' + top_drivers['familyName'], top_drivers['points'])
+    plt.xlabel('Driver')
+    plt.ylabel('Points')
+    plt.title('Top 10 Drivers')
+    plt.show()
 
-# Bar chart for average lap times
-ax.bar(df['Driver'], df['Average_LapTime'], color='skyblue')
-ax.set_ylabel('Average Lap Time')
-ax.set_title('Average Lap Time Comparison')
+def main():
+    # Input the season you want to analyze
+    season = input("Enter the Formula 1 season (e.g., 2022): ")
+    
+    # Fetch and process data
+    data = fetch_formula1_data(season)
+    drivers_df, races_df = process_data(data)
+    
+    # Analyze and visualize data
+    top_drivers = analyze_data(drivers_df)
+    visualize_data(top_drivers)
 
-# Show the plot
-plt.show()
+if __name__ == "__main__":
+    main()
