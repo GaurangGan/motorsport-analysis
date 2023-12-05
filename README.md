@@ -42,15 +42,15 @@ This Python-based project focuses on data analysis and visualization in the moto
 ```
 4.Explore the visualizations generated in the output.
 
-##Usage
+## Usage
 Modify the data variable in analyze.py with your actual race data.
 Customize the analysis and visualizations based on your specific motorsports series or requirements.
 Run the script and explore the generated visualizations.
 Contributing
 Contributions are welcome! If you have ideas for improvements or new features, feel free to open an issue or submit a pull request.
 
-##License
+## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-##Acknowledgments
+## Acknowledgments
 Special thanks to [Motorsports Organization/API] for providing race data.
