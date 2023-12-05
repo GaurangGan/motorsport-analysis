@@ -29,7 +29,7 @@ This Python-based project focuses on data analysis and visualization in the moto
 
 1. Clone the repository:
   ```bash
-   git clone https://github.com/yourusername/motorsports-analysis.git
+   git clone https://github.com/GaurangGan/motorsports-analysis.git
    cd motorsports-analysis
    ```
 2. Install dep
