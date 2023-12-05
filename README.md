@@ -32,15 +32,11 @@ This Python-based project focuses on data analysis and visualization in the moto
    git clone https://github.com/GaurangGan/motorsports-analysis.git
    cd motorsports-analysis
    ```
-2. Install dep
-  ```bash
-    pip install -r requirements.txt
-  ```
-3.Run the analysis script
+2.Run the analysis script
 ```bash
     python analyze.py
 ```
-4.Explore the visualizations generated in the output.
+3.Explore the visualizations generated in the output.
 
 ## Usage
 Modify the data variable in analyze.py with your actual race data.
